@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
 const ProductCard = ({ product, onPress, addToCart }) => {
   return (
@@ -8,10 +9,10 @@ const ProductCard = ({ product, onPress, addToCart }) => {
       <View style={styles.details}>
         <Text style={styles.name}>{product.name}</Text>
         <Text style={styles.brand}>{product.brand}</Text>
-        <Text style={styles.price}>{product.price}</Text>
+        <Text style={styles.price}>LKR. {product.price}</Text>
       </View>
       <TouchableOpacity onPress={() => addToCart(product)} style={styles.addToCartButton}>
-        <Text style={styles.addToCartText}>Add to Cart</Text>
+        <FontAwesome name="cart-plus" size={20} color="#000" style={styles.addToCartIcon} />
       </TouchableOpacity>
     </TouchableOpacity>
   );
@@ -59,9 +60,13 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   addToCartButton: {
-    backgroundColor: '#2ecc71',
     paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingVertical: 10,
+    borderRadius: 5,
+  },
+  addToCartButton: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
     borderRadius: 5,
   },
   addToCartText: {
