@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#fff',
+    paddingTop: 20,
   },
   image: {
     width: 200,
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
   },
   detailsContainer: {
     alignItems: 'center',
+    paddingHorizontal: 20,
   },
   name: {
     fontSize: 24,
@@ -51,12 +53,12 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'green',
+    color: '#2ecc71',
     marginBottom: 10,
   },
   description: {
     textAlign: 'center',
-    paddingHorizontal: 20,
+    marginBottom: 20,
   },
 });
 
