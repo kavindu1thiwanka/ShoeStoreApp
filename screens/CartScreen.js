@@ -1,37 +1,51 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, FlatList, Button, StyleSheet } from 'react-native';
 
-const CartScreen = ({ route, navigation }) => {
-  const { cartItems, setCartItems } = route.params;
+const CartScreen = ({ route }) => {
+  const { cartItems, setCartItems } = route.params; // Destructure cartItems and setCartItems from route params
+  const [totalPrice, setTotalPrice] = useState(0);
 
+  // Function to remove item from cart
   const removeItem = (index) => {
-    const updatedCart = [...cartItems];
-    updatedCart.splice(index, 1);
-    setCartItems(updatedCart);
+    const newCartItems = [...cartItems];
+    newCartItems.splice(index, 1); // Remove item at the given index
+    setCartItems(newCartItems); // Update cart items
+    // Recalculate total price after removing item
+    calculateTotalPrice(newCartItems);
   };
 
-  useEffect(() => {
-    // This effect will trigger every time cartItems changes
-    navigation.setParams({ cartItems }); // Update navigation params
-  }, [cartItems]); // Re-run effect when cartItems changes
+  // Function to calculate total price
+  const calculateTotalPrice = (items) => {
+    const total = items.reduce((acc, item) => acc + parseFloat(item.price), 0);
+    setTotalPrice(total.toFixed(2)); // Set total price with 2 decimal places
+  };
+
+  // Calculate total price on initial render
+  useState(() => {
+    calculateTotalPrice(cartItems);
+  }, []);
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Cart Items</Text>
       {cartItems.length > 0 ? (
-        <FlatList
-          data={cartItems}
-          renderItem={({ item, index }) => (
-            <View style={styles.itemContainer}>
-              <Text>{item.name}</Text>
-              <Text>{item.price}</Text>
-              <TouchableOpacity onPress={() => removeItem(index)} style={styles.removeButton}>
-                <Text style={styles.removeButtonText}>Remove</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-          keyExtractor={(item, index) => index.toString()}
-        />
+        <>
+          <FlatList
+            data={cartItems}
+            renderItem={({ item, index }) => (
+              <View style={styles.itemContainer}>
+                <Text>{item.name}</Text>
+                <Text>LKR. {item.price}</Text>
+                <Button title="Remove" onPress={() => removeItem(index)} />
+              </View>
+            )}
+            keyExtractor={(item, index) => index.toString()}
+          />
+          <View style={styles.totalContainer}>
+            <Text>Total Price: LKR. {totalPrice}</Text>
+            <Button title="Purchase" onPress={() => alert('Purchase button clicked')} />
+          </View>
+        </>
       ) : (
         <Text style={styles.emptyText}>Your cart is empty</Text>
       )}
@@ -58,14 +72,11 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
     paddingVertical: 10,
   },
-  removeButton: {
-    backgroundColor: 'red',
-    padding: 5,
-    borderRadius: 5,
-  },
-  removeButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
+  totalContainer: {
+    marginTop: 20,
+    borderTopWidth: 1,
+    borderTopColor: '#ccc',
+    paddingTop: 10,
   },
   emptyText: {
     fontSize: 16,
