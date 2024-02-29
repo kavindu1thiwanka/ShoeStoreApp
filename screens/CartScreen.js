@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, Button, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 
 const CartScreen = ({ route }) => {
   const { cartItems, setCartItems } = route.params; // Destructure cartItems and setCartItems from route params
@@ -34,16 +34,20 @@ const CartScreen = ({ route }) => {
             data={cartItems}
             renderItem={({ item, index }) => (
               <View style={styles.itemContainer}>
-                <Text>{item.name}</Text>
-                <Text>LKR. {item.price}</Text>
-                <Button title="Remove" onPress={() => removeItem(index)} />
+                <Text style={styles.itemName}>{item.name}</Text>
+                <Text style={styles.itemPrice}>LKR. {item.price}</Text>
+                <TouchableOpacity onPress={() => removeItem(index)} style={styles.removeItemButton}>
+                  <Text style={styles.removeItemText}>Remove</Text>
+                </TouchableOpacity>
               </View>
             )}
             keyExtractor={(item, index) => index.toString()}
           />
           <View style={styles.totalContainer}>
-            <Text>Total Price: LKR. {totalPrice}</Text>
-            <Button title="Purchase" onPress={() => alert('Purchase button clicked')} />
+            <Text style={styles.totalText}>Total Price: LKR. {totalPrice}</Text>
+            <TouchableOpacity style={styles.purchaseButton} onPress={() => alert('Purchase button clicked')}>
+              <Text style={styles.purchaseButtonText}>Purchase</Text>
+            </TouchableOpacity>
           </View>
         </>
       ) : (
@@ -60,9 +64,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 20,
   },
   itemContainer: {
     flexDirection: 'row',
@@ -72,11 +76,44 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
     paddingVertical: 10,
   },
+  itemName: {
+    fontSize: 16,
+  },
+  itemPrice: {
+    fontSize: 16,
+  },
+  removeItemButton: {
+    backgroundColor: '#e74c3c',
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 5,
+  },
+  removeItemText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
   totalContainer: {
     marginTop: 20,
     borderTopWidth: 1,
     borderTopColor: '#ccc',
     paddingTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  totalText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  purchaseButton: {
+    backgroundColor: '#3498db',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  purchaseButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
   emptyText: {
     fontSize: 16,
