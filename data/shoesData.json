@@ -3,7 +3,7 @@
         "id": 1,
         "name": "Nike Air Force 1",
         "brand": "Nike",
-        "price": "$90",
+        "price": "90",
         "description": "Timeless style meets modern comfort with the Nike Air Force 1 shoes.",
         "image": "https://static.nike.com/a/videos/t_PDP_1280_v1/f_auto,q_auto:eco,so_4.92/a91adb2a-77f4-4e15-811b-4847a3768ac0/air-force-1-07-shoe-HWWX9W.jpg"
     },
@@ -11,7 +11,7 @@
         "id": 2,
         "name": "Adidas Superstar",
         "brand": "Adidas",
-        "price": "$80",
+        "price": "80",
         "description": "The iconic Adidas Superstar shoes with a classic shell toe design.",
         "image": "https://images.asos-media.com/products/adidas-originals-superstar-trainers-in-white/13176419-1-white?$n_640w$&wid=513&fit=constrain"
     },
@@ -19,7 +19,7 @@
         "id": 3,
         "name": "Puma Suede Classic",
         "brand": "Puma",
-        "price": "$70",
+        "price": "70",
         "description": "Puma Suede Classic shoes offer a sleek, classic look with comfort features.",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tD1VBY2zvlqMKa4oaONDKqn57KRpt_-fNQ&usqp=CAU"
     },
@@ -27,7 +27,7 @@
         "id": 4,
         "name": "Converse Chuck Taylor All Star",
         "brand": "Converse",
-        "price": "$55",
+        "price": "55",
         "description": "The iconic Converse Chuck Taylor All Star shoes, a timeless classic for any wardrobe.",
         "image": "https://img.lazcdn.com/g/p/01228a12d939fbf338dc49742fd831c0.jpg_720x720q80.jpg"
     },
@@ -35,7 +35,7 @@
         "id": 5,
         "name": "Vans Old Skool",
         "brand": "Vans",
-        "price": "$65",
+        "price": "65",
         "description": "Vans Old Skool shoes with the iconic side stripe for a classic skate style.",
         "image": "https://5.imimg.com/data5/ANDROID/Default/2021/4/MJ/SJ/QX/35945583/product-jpeg-500x500.jpg"
     }
